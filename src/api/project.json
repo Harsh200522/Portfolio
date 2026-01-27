@@ -1,0 +1,45 @@
+{
+  "status": true,
+  "totalProjects": 3,
+  "projects": [
+    {
+      "project_id": "P101",
+      "project_name": "Society Management System",
+      "technology": "ASP.NET, C#, SQL Server, Java Script, Ajax, Bootstrap, CSS",
+      "type": "Web Application",
+      "duration": "6 Months",
+      "status": "Completed",
+      "description": "A system to manage society members, notices, complaints, and payments.",
+      "image": "/images/Society.png",
+      "documentation": "/documentation/Society_Management_System.pdf",
+      "ppt": "https://docs.google.com/presentation/d/1A9LNQRpascnA8ClP9doEmdhSegwOYfz7HMDghALe9u4/edit?usp=sharing",
+      "github": "https://github.com/devjari235/Society_management"
+    },
+    {
+      "project_id": "P102",
+      "project_name": "Online Quiz Management System",
+      "technology": "ASP.NET, C#, Java Script, Bootstrap, CSS",
+      "type": "Web Application",
+      "duration": "2 Months",
+      "status": "Completed",
+      "description": "Conducts online quizzes with timer and result evaluation.",
+      "image": "/images/Quize.png",
+      "documentation": "",
+      "ppt": "",
+      "github": "https://github.com/Harsh200522/Quiz-mgmt-System"
+    },
+    {
+      "project_id": "P103",
+      "project_name": "Online Art Gallery System",
+      "technology": "ASP.NET, C#, Java Script, Bootstrap, CSS",
+      "type": "Web Application",
+      "duration": "2 Months",
+      "status": "Completed",
+      "description": "An online platform to showcase artworks, manage art collections, and allow users to view and explore different art categories.",
+      "image": "/images/Art.png",
+      "documentation": "/documentation/Art_Gallery.pdf",
+      "ppt": "https://docs.google.com/presentation/d/1fRnA_arSXZVj52CS7nEB0-QSxnkVT2zPtvzW99O5-nM/edit?usp=sharing",
+      "github": "https://github.com/Harsh200522/Online-Art-Gallery"
+    }
+  ]
+}
