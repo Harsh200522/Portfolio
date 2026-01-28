@@ -4,7 +4,7 @@ import "../style/Home.css";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { FaBriefcase, FaMapMarkerAlt, FaCaretRight } from "react-icons/fa";
-import Contact from "./contact";
+import Contact from "./Contact";
 import { Link } from "react-router-dom";
 
 const Home = () => {
