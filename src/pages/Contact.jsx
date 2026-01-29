@@ -3,7 +3,6 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
 import '../style/Contact.css';
 import Swal from 'sweetalert2';
 
-
 const Contact = () => {
   // ✅ Form state
   const [name, setName] = useState('');
@@ -16,7 +15,7 @@ const Contact = () => {
   e.preventDefault();
 
   try {
-    const res = await fetch('http://localhost:5000/send-mail', {
+    const res = await fetch('/api/send-mail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
