@@ -1,23 +1,28 @@
-/* Base styles */
+/* Base styles - REMOVED max-width for full width */
 .home-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 80px 60px;
+  justify-content: center;
+  padding: 80px 5%;  /* Changed from fixed px to percentage for responsiveness */
+  margin: 0 auto;
   color: #fff;
   position: relative;
   gap: 60px;
   flex-wrap: wrap;
   background: linear-gradient(135deg, #0a0a0f 0%, #141425 50%, #0a0a0f 100%);
+  width: 100%;  /* Full width */
+  box-sizing: border-box;  /* Include padding in width calculation */
 }
 
-/* Left Section */
+/* Left Section - REMOVED width restrictions */
 .left-section {
   flex: 1;
   min-width: 300px;
   position: relative;
   z-index: 2;
+  width: 100%;  /* Full width */
+  max-width: none;  /* Remove max-width restriction */
 }
 
 .title {
@@ -32,6 +37,9 @@
   background-clip: text;
   animation: textShimmer 8s linear infinite;
   filter: drop-shadow(0 0 20px rgba(15, 240, 252, 0.3));
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;  /* Full width */
 }
 
 .cursor-blink {
@@ -44,6 +52,7 @@
   vertical-align: middle;
 }
 
+/* Description box - FULL WIDTH */
 .description-box {
   font-size: 1.2rem;
   line-height: 1.8;
@@ -56,6 +65,10 @@
   backdrop-filter: blur(10px);
   border-radius: 0 15px 15px 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;  /* Full width */
+  box-sizing: border-box;  /* Include padding in width */
 }
 
 .description-box strong {
@@ -68,6 +81,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin: 25px 0;
+  width: 100%;  /* Full width */
 }
 
 .tech-tag {
@@ -81,6 +95,7 @@
   position: relative;
   overflow: hidden;
   cursor: default;
+  flex-shrink: 0;
 }
 
 .tech-tag:hover {
@@ -89,17 +104,22 @@
   box-shadow: 0 5px 15px rgba(15, 240, 252, 0.2);
 }
 
+/* Stats container - FULL WIDTH */
 .stats-container {
   display: flex;
   gap: 30px;
   margin: 30px 0 40px;
   flex-wrap: wrap;
+  width: 100%;  /* Full width */
+  justify-content: space-between;  /* Use all available space */
 }
 
 .stat-item {
   text-align: center;
   padding: 15px;
-  min-width: 120px;
+  flex: 1;  /* Equal width distribution */
+  min-width: 140px;  /* Increased min-width */
+  box-sizing: border-box;  /* Include padding in width */
 }
 
 .stat-number {
@@ -112,6 +132,7 @@
   display: block;
   line-height: 1;
   text-shadow: 0 0 20px rgba(15, 240, 252, 0.3);
+  word-break: break-all;
 }
 
 .stat-label {
@@ -120,6 +141,7 @@
   margin-top: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  word-break: break-word;
 }
 
 .cta-button {
@@ -138,6 +160,11 @@
   overflow: hidden;
   transition: all 0.4s ease;
   backdrop-filter: blur(10px);
+  width: auto;  /* Changed from 100% to auto */
+  min-width: 300px;  /* Minimum width */
+  display: block;  /* Make it block to center */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-button:hover {
@@ -154,6 +181,7 @@
   justify-content: center;
   align-items: center;
   perspective: 1000px;
+  width: 100%;  /* Full width */
 }
 
 .profile-image-container {
@@ -161,6 +189,7 @@
   width: 380px;
   height: 500px;
   animation: float3D 6s ease-in-out infinite;
+  max-width: 100%;  /* Responsive */
 }
 
 .profile-glow {
@@ -266,64 +295,295 @@
   51%, 100% { opacity: 0; }
 }
 
-/* Responsive styles */
+/* Responsive styles - COMPLETELY UPDATED FOR FULL WIDTH */
 @media (max-width: 1024px) {
   .home-container { 
     flex-direction: column;
     text-align: center;
-    padding: 60px 30px;
+    padding: 50px 4%;  /* Reduced padding for more width */
     gap: 40px;
+    max-width: 100%;  /* Remove any max-width */
   }
   
   .title { 
     font-size: 3.5rem; 
+    padding: 0;
+    width: 100%;
+    text-align: center;
   }
   
   .profile-image-container { 
     width: 320px; 
     height: 420px; 
+    max-width: 90%;  /* Responsive */
   }
   
   .description-box { 
     text-align: left; 
+    padding: 25px;
+    width: 100%;
+    margin: 0 auto 30px;
+    border-radius: 0 12px 12px 0;
+  }
+  
+  .stats-container {
+    justify-content: space-between;  /* Use all space */
+    gap: 15px;
+    width: 100%;
+    margin: 30px auto;
+  }
+  
+  .stat-item {
+    min-width: 130px;
+    padding: 12px;
+    flex: 1;
+  }
+  
+  .cta-button {
+    margin: 20px auto 0;
+    display: block;
+    width: auto;
+  }
+  
+  .left-section {
+    width: 100%;
+    padding: 0;
   }
 }
 
+/* MOBILE - FULL WIDTH */
 @media (max-width: 768px) {
-  .title { 
-    font-size: 2.8rem; 
+  .home-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 3%;  /* Minimal padding for max width */
+    gap: 35px;
+    min-height: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .left-section,
+  .right-section {
+    flex: none;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
   }
   
-  .description-box { 
-    font-size: 1.1rem; 
-    padding: 20px; 
+  .title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    padding: 0;
+    text-align: center;
+    line-height: 1.2;
+    width: 100%;
   }
   
-  .profile-image-container { 
-    width: 280px; 
-    height: 380px; 
+  .cursor-blink {
+    height: 50px;
+    width: 2px;
   }
   
-  .tech-stack { 
-    justify-content: center; 
+  .description-box {
+    padding: 22px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    border-radius: 0 10px 10px 0;
+    width: 100%;
   }
   
-  .stats-container { 
-    justify-content: center; 
-    gap: 20px; 
+  .tech-stack {
+    justify-content: flex-start;  /* Align left for more width usage */
+    gap: 10px;
+    margin: 20px 0;
+    width: 100%;
   }
   
-  .stat-item { 
-    min-width: 100px; 
+  .tech-tag {
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
   
-  .stat-number { 
-    font-size: 2rem; 
+  .stats-container {
+    gap: 12px;
+    margin: 25px 0 30px;
+    justify-content: space-between;  /* Full width utilization */
+    width: 100%;
+  }
+  
+  .stat-item {
+    min-width: 0;
+    padding: 12px 8px;
+    flex: 1;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.8px;
+    margin-top: 6px;
+  }
+  
+  .profile-image-container {
+    width: 280px;
+    height: 370px;
+    max-width: 85%;
+  }
+  
+  .cta-button {
+    padding: 16px 35px;
+    font-size: 1.05rem;
+    letter-spacing: 1.8px;
+    min-width: 280px;
+    margin: 20px auto 0;
   }
 }
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 25px 2%;  /* Even less padding for more width */
+    gap: 30px;
+  }
+  
+  .title {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+  }
+  
+  .cursor-blink {
+    height: 40px;
+    margin-left: 5px;
+  }
+  
+  .description-box {
+    padding: 18px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .stats-container {
+    gap: 8px;
+    margin: 20px 0 25px;
+  }
+  
+  .stat-item {
+    padding: 10px 5px;
+    flex: 1;
+    min-width: 100px;  /* Ensure minimum width */
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .tech-tag {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .profile-image-container {
+    width: 260px;
+    height: 345px;
+    max-width: 90%;
+  }
+  
+  .cta-button {
+    padding: 14px 30px;
+    font-size: 1rem;
+    min-width: 250px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 375px) {
+  .home-container {
+    padding: 20px 2%;  /* Minimal padding */
+  }
+  
+  .title {
+    font-size: 2.1rem;
+  }
+  
+  .description-box {
+    padding: 16px;
+    font-size: 1rem;
+  }
+  
+  .stats-container {
+    flex-wrap: nowrap;  /* Keep in single row */
+    gap: 5px;
+  }
+  
+  .stat-item {
+    padding: 10px 4px;
+  }
+  
+  .stat-number {
+    font-size: 1.6rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .profile-image-container {
+    width: 240px;
+    height: 320px;
+  }
+}
+
+/* VERY Small Devices */
+@media (max-width: 320px) {
+  .home-container {
+    padding: 15px 1%;  /* Almost no padding for max width */
+  }
+  
+  .title {
+    font-size: 1.9rem;
+  }
+  
+  .description-box {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+  
+  .stats-container {
+    gap: 3px;
+  }
+  
+  .stat-item {
+    padding: 8px 3px;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .profile-image-container {
+    width: 220px;
+    height: 290px;
+  }
+}
+
 .about-me{
   text-align: justify;
 }
+
 .section-heading {
   font-size: 2.8rem; 
   font-weight: 700; 
@@ -339,6 +599,9 @@
   text-align: center;
   position: relative;
   padding-bottom: 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 100%;  /* Full width */
 }
 
 .section-heading::after {
@@ -359,6 +622,7 @@
   .section-heading {
     font-size: 2.5rem; 
     margin-bottom: 30px;
+    width: 100%;
   }
 }
 
@@ -366,23 +630,112 @@
   .section-heading {
     font-size: 2.2rem; 
     margin-bottom: 25px;
+    padding-bottom: 12px;
+    width: 100%;
   }
   
   .section-heading::after {
     width: 80px;
+    height: 2.5px;
   }
 }
 
-/* For mobile phones */
 @media (max-width: 480px) {
   .section-heading {
-    font-size: 1.9rem; 
+    font-size: 2rem; 
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    width: 100%;
   }
   
   .section-heading::after {
-    width: 60px;
+    width: 70px;
     height: 2px;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+  .section-heading {
+    font-size: 1.8rem;
+    width: 100%;
+  }
+}
+/* CTA Button Fix - Update this section only */
+.cta-button {
+  position: relative;
+  margin-top: 10px;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent;
+  border: 2px solid #0ff0fc;
+  color: #0ff0fc;
+  cursor: pointer;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  width: fit-content;  /* Changed from auto/100% to fit-content */
+  min-width: 250px;    /* Reduced from 300px */
+  max-width: 90%;      /* Added to prevent overflow */
+  display: block;      /* Keep block for centering */
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.cta-button:hover {
+  background: rgba(15, 240, 252, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(15, 240, 252, 0.3), 0 0 50px rgba(15, 240, 252, 0.2);
+  letter-spacing: 3px;
+}
+
+/* Responsive button fixes */
+@media (max-width: 1024px) {
+  .cta-button {
+    min-width: 240px;  /* Slightly smaller */
+    max-width: 85%;    /* Ensure it doesn't overflow */
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-button {
+    padding: 15px 35px;  /* Slightly reduced padding */
+    font-size: 1.05rem;
+    letter-spacing: 1.8px;
+    min-width: 220px;    /* Reduced */
+    max-width: 80%;      /* Tighter constraint */
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    padding: 14px 30px;
+    font-size: 1rem;
+    min-width: 200px;    /* Further reduced */
+    max-width: 85%;      /* Allow a bit more width */
+  }
+}
+
+@media (max-width: 375px) {
+  .cta-button {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+    min-width: 180px;    /* Smaller for very small screens */
+    max-width: 90%;      /* More width allowed */
+  }
+}
+
+@media (max-width: 320px) {
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 160px;    /* Minimum for tiny screens */
+    max-width: 95%;      /* Almost full width */
   }
 }
 /* ================= SKILLS SECTION ================= */

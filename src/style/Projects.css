@@ -1,10 +1,12 @@
 /* ================= PROJECTS SECTION ================= */
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 35px;
-  margin-top: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
   width: 100%;
+  padding: 0 16px;
+  margin-top: 50px;
+  box-sizing: border-box;
 }
 
 /* ---------- Project Card ---------- */
@@ -179,6 +181,132 @@
   background-clip: text;
 }
 
+/* ================= PROJECT BUTTONS ================= */
+.project-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.project-button {
+  padding: 10px 18px;
+  background: rgba(15, 240, 252, 0.1);
+  border: 1px solid rgba(15, 240, 252, 0.3);
+  border-radius: 8px;
+  color: #0ff0fc;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  min-width: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.project-button:hover::before {
+  left: 100%;
+}
+
+/* Individual button colors */
+.project-button.preview-btn {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+}
+
+.project-button.docs-btn {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+.project-button.ppt-btn {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+.project-button.github-btn {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Hover effects */
+.project-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-button.preview-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.project-button.docs-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+.project-button.ppt-btn:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+}
+
+.project-button.github-btn:hover {
+  background: rgba(15, 23, 42, 1);
+  border-color: #0ff0fc;
+  box-shadow: 0 8px 20px rgba(15, 240, 252, 0.3);
+  color: #0ff0fc;
+}
+
+/* Icon hover effects */
+.project-button:hover svg {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.project-button:active {
+  transform: translateY(-1px);
+}
+
+/* Button animations */
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 5px 20px rgba(15, 240, 252, 0.3);
+  }
+}
+
+.project-button:hover {
+  animation: buttonPulse 1.5s infinite alternate;
+}
+
 /* ================= ALERT NOTIFICATION ================= */
 .alert-notification {
   display: flex;
@@ -293,18 +421,26 @@
   50% { opacity: 1; }
 }
 
+@keyframes textShimmer {
+  0% { background-position: -100% center; }
+  100% { background-position: 200% center; }
+}
+
 /* ================= RESPONSIVE DESIGN ================= */
 @media (max-width: 1200px) {
   .projects-container {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
   }
 }
 
 @media (max-width: 1024px) {
   .projects-container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    gap: 24px;
+  }
+
+  .project-image {
+    height: 180px;
   }
   
   .project-card > div:last-child {
@@ -315,77 +451,80 @@
     font-size: 1.5rem;
   }
   
-  .project-image {
-    height: 180px;
+  .project-card p {
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 768px) {
   .projects-container {
     grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 0 10px;
+    gap: 20px;
+    padding: 0 14px;
   }
-  
+
   .project-card > div:last-child {
     padding: 20px;
   }
-  
+
   .project-card h3 {
     font-size: 1.4rem;
   }
-  
+
   .project-card p {
     font-size: 0.95rem;
   }
-  
+
   .project-image {
-    height: 170px;
+    height: 180px;
   }
   
-  /* Alert Responsive */
-  .alert-notification {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-    padding: 25px 20px;
-    margin: 30px 15px;
+  .project-buttons {
+    gap: 10px;
+    flex-wrap: nowrap; /* Keep buttons in one line */
   }
   
-  .alert-icon {
-    font-size: 1.8rem;
+  .project-button {
+    padding: 9px 14px;
+    font-size: 0.85rem;
+    min-width: 80px;
+    flex: 1; /* Make buttons equal width */
   }
   
-  .alert-content h3 {
-    font-size: 1.3rem;
+  .project-button.github-btn {
+    flex: 2; /* GitHub button takes more space */
+  }
+}
+
+@media (max-width: 640px) {
+  .project-buttons {
+    flex-wrap: wrap; /* Allow wrapping if needed */
   }
   
-  .alert-content p {
-    font-size: 0.95rem;
+  .project-button {
+    min-width: 70px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
   
-  .alert-close {
-    top: 10px;
-    right: 15px;
+  .project-button span {
+    display: none; /* Hide button text on smaller screens */
   }
   
-  .loading-container {
-    padding: 60px 15px;
+  .project-button::after {
+    content: attr(data-label);
+    font-size: 0.7rem;
   }
   
-  .loading-spinner {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .loading-container p {
-    font-size: 1rem;
+  .project-button svg {
+    margin-right: 4px;
   }
 }
 
 @media (max-width: 480px) {
   .projects-container {
     gap: 20px;
+    padding: 0 12px;
   }
   
   .project-card > div:last-child {
@@ -398,15 +537,21 @@
   
   .project-card p {
     font-size: 0.9rem;
+    margin-bottom: 15px;
   }
   
   .project-image {
     height: 160px;
   }
   
+  .project-tech {
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
   .project-tech span {
     font-size: 0.8rem;
-    padding: 5px 12px;
+    padding: 5px 10px;
   }
   
   .project-card::after {
@@ -417,10 +562,28 @@
     font-size: 0.8rem;
   }
   
+  .project-buttons {
+    gap: 8px;
+    margin-top: 15px;
+  }
+  
+  .project-button {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    min-width: 60px;
+  }
+  
   /* Alert Responsive */
   .alert-notification {
-    padding: 20px 15px;
-    margin: 20px 10px;
+    padding: 18px 20px;
+    margin: 20px 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .alert-icon {
+    font-size: 1.8rem;
   }
   
   .alert-content h3 {
@@ -431,173 +594,52 @@
     font-size: 0.9rem;
   }
   
+  .alert-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 1.3rem;
+  }
+  
   .loading-container {
-    padding: 50px 15px;
+    padding: 60px 15px;
     margin-top: 30px;
   }
   
   .loading-spinner {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
   }
   
   .loading-container p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 
-/* Animation keyframes for text shimmer (if not already defined elsewhere) */
-@keyframes textShimmer {
-  0% { background-position: -100% center; }
-  100% { background-position: 200% center; }
-}
-/* ================= PROJECT BUTTONS ================= */
-.project-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.project-button {
-  padding: 10px 18px;
-  background: rgba(15, 240, 252, 0.1);
-  border: 1px solid rgba(15, 240, 252, 0.3);
-  border-radius: 8px;
-  color: #0ff0fc;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-  min-width: 100px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.project-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.6s ease;
-}
-
-.project-button:hover::before {
-  left: 100%;
-}
-
-/* Individual button colors */
-.project-button.preview-btn {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #60a5fa;
-}
-
-.project-button.docs-btn {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.4);
-  color: #34d399;
-}
-
-.project-button.ppt-btn {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.4);
-  color: #fbbf24;
-}
-
-.project-button.github-btn {
-  background: rgba(15, 23, 42, 0.8);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-/* Hover effects */
-.project-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.project-button.preview-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: #3b82f6;
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-}
-
-.project-button.docs-btn:hover {
-  background: rgba(16, 185, 129, 0.2);
-  border-color: #10b981;
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-}
-
-.project-button.ppt-btn:hover {
-  background: rgba(245, 158, 11, 0.2);
-  border-color: #f59e0b;
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
-}
-
-.project-button.github-btn:hover {
-  background: rgba(15, 23, 42, 1);
-  border-color: #0ff0fc;
-  box-shadow: 0 8px 20px rgba(15, 240, 252, 0.3);
-  color: #0ff0fc;
-}
-
-/* Icon hover effects */
-.project-button:hover svg {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 5px currentColor);
-}
-
-.project-button:active {
-  transform: translateY(-1px);
-}
-
-/* Button animations */
-@keyframes buttonPulse {
-  0%, 100% {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  50% {
-    box-shadow: 0 5px 20px rgba(15, 240, 252, 0.3);
-  }
-}
-
-.project-button:hover {
-  animation: buttonPulse 1.5s infinite alternate;
-}
-
-/* ================= RESPONSIVE BUTTONS ================= */
-@media (max-width: 768px) {
+@media (max-width: 360px) {
   .project-buttons {
-    gap: 10px;
+    gap: 6px;
   }
   
   .project-button {
-    padding: 9px 16px;
-    font-size: 0.85rem;
-    min-width: 90px;
-  }
-}
-
-@media (max-width: 480px) {
-  .project-buttons {
-    flex-direction: column;
-    gap: 8px;
+    padding: 7px 8px;
+    font-size: 0.7rem;
+    min-width: 50px;
   }
   
-  .project-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 0.85rem;
+  .project-button::after {
+    font-size: 0.65rem;
+  }
+  
+  .project-button svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .project-tech span {
+    font-size: 0.75rem;
+    padding: 4px 8px;
   }
 }
-
